@@ -1,25 +1,18 @@
-/*
- * File: 0-putchar.c
- * Auth: Brennan D Baraban
- *
- */
-
 #include "putchar.h"
-
 /**
- * main - Prints "putchar" followed by a new line.
+ * main - Entry point
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	_putchar('p');
-	_putchar('u');
-	_putchar('t');
-	_putchar('c');
-	_putchar('h');
-	_putchar('a');
-	_putchar('r');
+	char *sh = "putchar";
+
+	while (*sh)
+	{
+		_putchar(*sh);
+		sh++;
+	}
 	_putchar('\n');
 
 	return (0);
