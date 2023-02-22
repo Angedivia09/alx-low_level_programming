@@ -1,15 +1,10 @@
-/*
- * File: 0-putchar.c
- * Auth: Brennan D Baraban
- *
- */
-
 #include "main.h"
 
 /**
- * main - Prints "alx" followed by a new line.
+ * main - Entry point
  *
- * Return: Always 0.
+ * Return: Always returns 0
+ *
  */
 int main(void)
 {
@@ -20,7 +15,8 @@ int main(void)
 	_putchar('h');
 	_putchar('a');
 	_putchar('r');
+	_putchar('.');
+	_putchar('c');
 	_putchar('\n');
-
 	return (0);
 }
