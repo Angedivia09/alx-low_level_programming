@@ -1,19 +1,13 @@
 #include "main.h"
 
-
 /**
- * print_numbers - checks for checks for a digit (0 through 9).
- *
- * Return: Always 0.
- */
-void print_numbers(void)
+  * mul - Multiplies two integers
+  * @x: The first number to multiply
+  * @y: The second number to multiply with first number
+  *
+  * Return: The result of multiplication between x param and y param
+  */
+int mul(int x, int y)
 {
- int c;
-
-
- for (c = 48; c < 58; c++)
- {
- _putchar(c);
- }
- _putchar('\n');
+	return (x * y);
 }
