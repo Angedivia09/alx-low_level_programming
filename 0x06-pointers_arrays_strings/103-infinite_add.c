@@ -1,73 +1,54 @@
 #include "main.h"
-
-/**
- * a_to_int - get integer value of string of characters
- * @s: string to change to integer
- *
- * Return: integer value of string
- */
-
-int a_to_int(char *s)
-{
-	int i = 0;
-	int size = 0;
-	int place = 1;
-	int num = 0;
-
-	while (s[i])
-	{
-		size++;
-		i++;
-	}
-	for (i = (size - 1); i >= 0; i--)
-	{
-		num += ((s[i] - '0') * place);
-		place *= 10;
-	}
-	return (num);
-}
-
+#include <stdio.h>
 /**
  * infinite_add - adds two numbers
- * @n1: first input number
- *
- * @n2: second input number
- *
- * @r: input buffer to return
- *
- * @size_r: size of buffer
- *
- * Return: pointer to buffer or 0 if size of result is greater than buffer size
+ * @n1: number one.
+ * @n2: number two.
+ * @r: buffer that the function will use to store the result.
+ * @size_r: buffer size:
+ * Return: the pointer to dest.
  */
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int num1, num2, sum, n, digits, i;
+	int c1 = 0, c2 = 0, op, bg, dr1, dr2, add = 0;
 
-	num1 = a_to_int(n1);
-	num2 = a_to_int(n2);
-	sum = num1 + num2;
-	n = sum;
-	digits = 1;
-	i = 0;
-
-	while ((n / 10) != 0)
-	{
-		digits++;
-		n /= 10;
-	}
-	if ((digits + 1) > size_r)
-	{
-		return (0);
-	}
+	while (*(n1 + c1) != '\0')
+		c1++;
+	while (*(n2 + c2) != '\0')
+		c2++;
+	if (c1 >= c2)
+		bg = c1;
 	else
+		bg = c2;
+	if (size_r <= bg + 1)
+		return (0);
+	r[bg + 1] = '\0';
+	c1--, c2--, size_r--;
+	dr1 = *(n1 + c1) - 48, dr2 = *(n2 + c2) - 48;
+	while (bg >= 0)
 	{
-		r[digits] = '\0';
-		for (i = (digits - 1); i >= 0; i--)
-		{
-			r[i] = (sum % 10) + '0';
-			sum /= 10;
-		}
+		op = dr1 + dr2 + add;
+		if (op >= 10)
+			add = op / 10;
+		else
+			add = 0;
+		if (op > 0)
+		*(r + bg) = (op % 10) + 48;
+		else
+			*(r + bg) = '0';
+		if (c1 > 0)
+			c1--, dr1 = *(n1 + c1) - 48;
+		else
+			dr1 = 0;
+		if (c2 > 0)
+			c2--, dr2 = *(n2 + c2) - 48;
+		else
+			dr2 = 0;
+		bg--, size_r--;
 	}
-	return (r);
+	if (*(r) == '0')
+		return (r + 1);
+	else
+		return (r);
 }
